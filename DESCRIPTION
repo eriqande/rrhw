@@ -1,0 +1,14 @@
+Package: rrhw
+Type: Package
+Title: For processing homeworks in my reproducible research course
+Version: 1.0
+Date: 2014-10-13
+Author: Eric C. Anderson
+Maintainer: Eric C. Anderson <eric.anderson@noaa.gov>
+Description: More about this later.
+License: US Gov't Work. Public Domain in U.S. and CC0 1.0 internationally
+Depends:
+    R (>= 3.1.0)
+Imports:
+    rmarkdown,
+    knitr
