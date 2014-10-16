@@ -84,7 +84,13 @@ submit_answer <- function(x) {
   assign(rr_question_chunk_name, ret, envir = rrhw_env)
   
   # and return the value
-  ret$Q_value
+  if(!is.null(ret$Q_value)) {
+    return(ret$Q_value)
+  } else {
+    return(invisible(NULL))
+  }
+  
+  
 }
 
 
