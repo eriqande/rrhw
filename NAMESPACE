@@ -2,4 +2,5 @@
 
 export(answer_list_to_data_frame)
 export(init_homework)
+export(prj_dir_containing)
 export(submit_answer)

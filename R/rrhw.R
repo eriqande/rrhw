@@ -106,3 +106,23 @@ answer_list_to_data_frame <- function(x) {
   z <- cbind(y, Q_value = I(x[val]))
   z
 }
+
+#' find directory level which has the file top_file
+#' 
+#' This will go up 0, 1, 2, 3, 4, and 5, directories looking
+#' for the file top_file.  It returns the least high up directory
+#' as a relative path (like "../../").  This is useful for
+#' finding where the .Rproj file is so you can define paths relative
+#' to that when inserting child documents into knitr docs, etc.
+#' Throws an error if it doesn't find a directory with top_file in it.
+#' @export
+prj_dir_containing <- function(top_file) {
+  uppaths=c("./", "../", "../../", "../../../", "../../../../", "../../../../../")
+  res <- sapply(uppaths, function(x) any(dir(path=x)==top_file))
+  res <- res[res == TRUE]
+  
+  if(!length(res)) stop(paste("Can't find the directory with", 
+                                 top_file, "in it from", getwd(), collapse=" "))
+  
+  names(res)[1]
+}
