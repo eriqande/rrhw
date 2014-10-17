@@ -124,5 +124,7 @@ prj_dir_containing <- function(top_file) {
   if(!length(res)) stop(paste("Can't find the directory with", 
                                  top_file, "in it from", getwd(), collapse=" "))
   
+  names(res)[names(res) == "./"] <- ""  # if it is in the current directory, just call it "" rather than ./
+  
   names(res)[1]
 }
