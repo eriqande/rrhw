@@ -77,7 +77,7 @@ submit_answer <- function(x) {
   ret$Q_number <- rr_question_number
   ret$Q_value <- eval.parent(substitute(x))
   y <- deparse(substitute(x))
-  y <- y[-c(1,length(y))] # pull of the curly braces
+  y <- y[-c(1,length(y))] # pull off the curly braces
   ret$Q_expr_str <- paste(y, collapse="\n")
   
   # now put that in the rrhw environment

@@ -6,6 +6,16 @@ https://github.com/eriqande/rep-res-course
 
 More instructions coming soon.
 
+## Dependencies
+
+Some functions make a system call to
+[git-pulls](https://github.com/schacon/git-pulls).  Get it with
+```sh
+sudo gem install git-pulls
+```
+and make sure it is in an R-accessible system path.
+
+
 ## Terms 
 
 As a work partially of the United States Government, this package is in the
