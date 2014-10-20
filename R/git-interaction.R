@@ -55,10 +55,10 @@ git_pulls_show_to_df <- function(N) {
   commit <- strsplit(y[grepl("^cmd: git", y)], "\\.\\.\\.")[[1]][2]
   
   pip <- pipe(paste("git merge-base master", commit))
-  merge_base <- scan(pip, what = "character")
+  merge_base <- scan(pip, what = "character")[1]
   close(pip)
   
-  pip <- pipe(paste("git diff --stat ", merge_base, "...", commit))
+  pip <- pipe(paste("git diff --stat ", merge_base, "...", commit, sep=""))
   diffstat <- readLines(pip)
   close(pip)
   
@@ -89,4 +89,20 @@ grab_open_pull_requests <- function(branch_p = character(0)) {
 }
 
 
+#' checkout a branch named rrhw-tmp from info in a row of a data frame about open pull requests
+#' 
+#' This function checks to see if rrhw-tmp is already a branch.  If it is, it will delete the
+#' branch first, and then it will check it out with a new commit. rrhw-tmp should never
+#' get left in a dirty state, or this will bomb.
+#' @param OPR A row of a data frame of open pull requests like that returned by \link{\code{grab_open_pull_requests}}
+checkout_hw_branch <- function(commit) {
+  if(length(commit)!=1) stop("commit must be a single character")
+  pip <- pipe("git branch")
+  br <- scan(pip, what = "character") 
+  close(pip)
+  if("rrhw-tmp" %in% br) {
+    system("git checkout master; git branch -D rrhw-tmp")
+  }
+  system(paste("git checkout -b rrhw-tmp", commit))
+}
 

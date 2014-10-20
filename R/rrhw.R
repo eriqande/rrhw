@@ -63,6 +63,9 @@ init_homework <- function(homework_name = "Unset") {
 submit_answer <- function(x) {
   
   ### I commented this out because it causes problems with "purling"
+  ### but I should enable it in "check-mode" or something so that
+  ### I can test to make sure each chunk that has a submit_answer 
+  ### function has rr.question==TRUE.
   # stop if this is in a chunk that does not have option rr.question==TRUE
   #if(!rr_in_rr_question_block) {
   #  stop("submit_answer can only be used in a code block with option rr.question==TRUE.  ")
@@ -80,7 +83,7 @@ submit_answer <- function(x) {
   y <- y[-c(1,length(y))] # pull off the curly braces
   ret$Q_expr_str <- paste(y, collapse="\n")
   
-  # now put that in the rrhw environment
+  # now put that in the rrhw environment so we can deal with it later
   assign(rr_question_chunk_name, ret, envir = rrhw_env)
   
   # and return the value
