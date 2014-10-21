@@ -74,7 +74,7 @@ submit_answer <- function(x) {
   
   ret <- list()
   ret$S_github <- rr_github_name # the S is for student
-  ret$S_pull_request_time <- rr_pull_request_time 
+  ret$S_commit <- rr_commit  
   ret$H_name <- rr_homework_name  # the H is for homework
   ret$Q_name <- rr_question_chunk_name
   ret$Q_number <- rr_question_number

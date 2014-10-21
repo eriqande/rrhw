@@ -94,7 +94,9 @@ grab_open_pull_requests <- function(branch_p = character(0)) {
 #' This function checks to see if rrhw-tmp is already a branch.  If it is, it will delete the
 #' branch first, and then it will check it out with a new commit. rrhw-tmp should never
 #' get left in a dirty state, or this will bomb.
-#' @param OPR A row of a data frame of open pull requests like that returned by \link{\code{grab_open_pull_requests}}
+#' @param OPR A row of a data frame of open pull requests like that
+#' returned by \code{\link{grab_open_pull_requests}}
+#' @export
 checkout_hw_branch <- function(commit) {
   if(length(commit)!=1) stop("commit must be a single character")
   pip <- pipe("git branch")
