@@ -60,7 +60,7 @@ init_homework <- function(homework_name = "Unset") {
 #' expression which is an argument to this function. Note that you 
 #' must put the curly braces around everthing.
 #' @export
-submit_answer <- function(x) {
+submit_answer <- function(x, subprob = "") {
   
   ### I commented this out because it causes problems with "purling"
   ### but I should enable it in "check-mode" or something so that
@@ -76,8 +76,8 @@ submit_answer <- function(x) {
   ret$S_github <- rr_github_name # the S is for student
   ret$S_commit <- rr_commit  
   ret$H_name <- rr_homework_name  # the H is for homework
-  ret$Q_name <- rr_question_chunk_name
-  ret$Q_number <- rr_question_number
+  ret$Q_name <- paste(rr_question_chunk_name, subprob, sep="")
+  ret$Q_number <- paste(rr_question_number, subprob, sep="")
   ret$Q_value <- eval.parent(substitute(x))
   y <- deparse(substitute(x))
   y <- y[-c(1,length(y))] # pull off the curly braces

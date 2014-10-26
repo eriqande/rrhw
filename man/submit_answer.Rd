@@ -3,7 +3,7 @@
 \alias{submit_answer}
 \title{workhorse function that processes homeworks}
 \usage{
-submit_answer(x)
+submit_answer(x, subprob = "")
 }
 \description{
 This function is something that the students submit their
